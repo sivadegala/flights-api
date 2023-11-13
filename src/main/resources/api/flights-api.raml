@@ -1,0 +1,64 @@
+#%RAML 1.0
+version: v1
+title: flights-api
+description: American Flight Api to get Flight details 
+mediaType: 
+- application/json
+
+traits:
+  clientcredentials.raml: !include /libraries/clientcredentials.raml
+
+
+/flights:
+  get:
+    is: [clientcredentials.raml]
+    queryParameters:
+      destination:
+        required: false
+        enum:
+          - SFO
+          - LAX
+          - CLE 
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include /libraries/get Response dataType.raml
+            example: !include /examples/get response example.json
+  post:
+    is: [clientcredentials.raml]
+    body:
+      application/json:
+        type: !include /libraries/Post Request datatype.raml
+        example: !include /examples/Post Request example.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: !include /libraries/Post Response datatype.raml
+            example: !include /examples/Post Response example.json
+  /{ID}:
+    is: [clientcredentials.raml]
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: !include /libraries/get response id dataType.raml
+              example: !include /examples/get response id example.json
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              type: !include /libraries/Delete Response dataType.raml
+              example: !include /examples/Delete Response example.json
+                
+    
+
+              
+               
+                 
+              
+
+            

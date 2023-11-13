@@ -1,0 +1,31 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  code:
+    required: true
+    type: string
+  price:
+    required: true
+    type: number
+  departureDate:
+    required: true
+    type: string
+  origin:
+    required: true
+    type: string
+  destination:
+    required: true
+    type: string
+  emptySeats:
+    required: true
+    type: number
+  plane:
+    type: object
+    properties:
+      type: 
+        type: string
+        required: true
+      totalSeats:
+        type: number
+        required: true
+    
